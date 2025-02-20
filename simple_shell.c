@@ -8,44 +8,44 @@
  */
 int main(int argc, char *argv[])
 {
-    char *input = NULL;
-    size_t bufsize = 0;
-    ssize_t nread;
-    char **args;
+	char *input = NULL;
+	size_t bufsize = 0;
+	ssize_t nread;
+	char **args;
 
-    /* Display the prompt and read input */
-    while (1)
-    {
-        if (isatty(STDIN_FILENO))
-            write(STDOUT_FILENO, "$ ", 2);
+	/* Display the prompt and read input */
+	while (1)
+	{
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
 
-        nread = getline(&input, &bufsize, stdin);
-        if (nread == -1)
-        {
-            free(input);
-            return (0);
-        }
+		nread = getline(&input, &bufsize, stdin);
+		if (nread == -1)
+		{
+			free(input);
+			return (0);
+		}
 
-        input[nread - 1] = '\0';  /* Remove newline */
-        args = parse_input(input); /* Parse the input */
+		input[nread - 1] = '\0';  /* Remove newline */
+		args = parse_input(input); /* Parse the input */
 
-        if (args == NULL)
-        {
-            free(input);
-            continue;
-        }
+		if (args == NULL)
+		{
+			free(input);
+			continue;
+		}
 
-        if (execute_command(args) == -1)
-        {
-            free(input);
-            free(args);
-            return (1);
-        }
+		if (execute_command(args) == -1)
+		{
+			free(input);
+			free(args);
+			return (1);
+		}
 
-        free(input);
-        free(args);
-    }
+		free(input);
+		free(args);
+	}
 
-    return (0);
+	return (0);
 }
 
