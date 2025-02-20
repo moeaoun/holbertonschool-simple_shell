@@ -7,27 +7,27 @@
  */
 int execute_command(char **args)
 {
-    pid_t pid;
-    int status;
+	pid_t pid;
+	int status;
 
-    pid = fork();
-    if (pid == -1)
-    {
-        perror("Error: fork failed");
-        return (-1);
-    }
-    if (pid == 0)
-    {
-        if (execve(args[0], args, NULL) == -1)
-        {
-            perror("Error: execve failed");
-            exit(1);
-        }
-    }
-    else
-    {
-        wait(&status);
-    }
-    return (0);
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("Error: fork failed");
+		return (-1);
+	}
+	if (pid == 0)
+	{
+		if (execve(args[0], args, NULL) == -1)
+		{
+			perror("Error: execve failed");
+			exit(1);
+		}
+	}
+	else
+	{
+		wait(&status);
+	}
+	return (0);
 }
 
