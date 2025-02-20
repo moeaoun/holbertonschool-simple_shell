@@ -7,25 +7,25 @@
  */
 char **parse_input(char *input)
 {
-    char **tokens;
-    char *token;
-    int i = 0;
+	char **tokens;
+	char *token;
+	int i = 0;
 
-    tokens = malloc(64 * sizeof(char *));
-    if (tokens == NULL)
-    {
-        perror("Error allocating memory");
-        return (NULL);
-    }
+	tokens = malloc(64 * sizeof(char *));
+	if (tokens == NULL)
+	{
+		perror("Error allocating memory");
+		return (NULL);
+	}
 
-    token = strtok(input, " ");
-    while (token != NULL)
-    {
-        tokens[i] = token;
-        i++;
-        token = strtok(NULL, " ");
-    }
-    tokens[i] = NULL;  /* Null-terminate the array */
-    return (tokens);
+	token = strtok(input, " ");
+	while (token != NULL)
+	{
+		tokens[i] = token;
+		i++;
+		token = strtok(NULL, " ");
+	}
+	tokens[i] = NULL;  /* Null-terminate the array */
+	return (tokens);
 }
 
