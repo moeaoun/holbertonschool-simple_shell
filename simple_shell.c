@@ -20,7 +20,7 @@ int main(void)
 
     while (1)
     {
-        /* Display prompt */
+        /* Display prompt before command */
         write(STDOUT_FILENO, "#cisfun$ ", 9);  /* You can change the prompt text here */
 
         /* Read user input */
@@ -31,8 +31,8 @@ int main(void)
             exit(0);
         }
 
-        /* Remove the newline character */
-        input[nread - 1] = '\0'; 
+        /* Remove the newline character from input */
+        input[nread - 1] = '\0';
 
         /* Split input into arguments (just one word expected) */
         args[0] = input;
@@ -51,7 +51,7 @@ int main(void)
         {
             if (execve(args[0], args, NULL) == -1)  /* Execute command */
             {
-                perror("./shell");
+                perror("./shell");  /* If execve fails, print error */
                 exit(1);
             }
         }
