@@ -1,0 +1,55 @@
+.\" Manpage for 1_one_simple_shell
+.TH man 1 "25 February 2025"
+.SH NAME
+1_one_simple_shell \- A simple Unix shell implementation
+.SH SYNOPSIS
+.B simple_shell
+.RI [env]
+.B main
+.RI [argc] [argv] [env]
+.SH DESCRIPTION
+The simple_shell program mimics a basic Unix shell that accepts user input,
+executes commands, and displays the results. It processes command chaining using
+operators like `&&`, `||`, and `;`. The shell also supports basic built-in
+commands such as `exit`, `cd`, and `help`.
+
+The shell allows users to interact with the system by typing commands, with
+support for handling environment variables and executing commands in the context
+of the user's current environment.
+
+.SH COMMANDS
+The following commands are supported by the shell:
+
+.TP
+.B exit
+Exits the shell. If an argument is provided, it will be used as the exit status code.
+
+.TP
+.B cd
+Changes the current directory. If no argument is provided, the shell changes to the user's home directory.
+
+.TP
+.B help
+Displays the help documentation for the shell.
+
+.SH OPTIONS
+There are no specific options for the shell program at this time.
+
+.SH ENVIRONMENT VARIABLES
+The following environment variables are used by the shell:
+
+.TP
+.B PATH
+The system path to search for executables when a command is entered.
+
+.TP
+.B HOME
+The home directory of the user. Used by the `cd` command when no arguments are provided.
+
+.SH EXAMPLES
+
+.TP
+1. To run the shell:
+```bash
+$ ./simple_shell
+
